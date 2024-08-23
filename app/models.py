@@ -1,36 +1,50 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class Moderator(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image = models.ImageField(upload_to='moderator_images/')
+    description = models.TextField()
+
+    def __str__(self):
+        return f"(ID:{self.id}) (Username: {self.user.username}) (Description: {self.description[:15]}...)"
 
 class Theme(models.Model):
     title = models.CharField(max_length=255)
-    date_created = models.DateField(auto_now_add=True)
-    date_updated = models.DateField(auto_now=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_change = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"Theme: {self.title}"
+        return f"(ID:{self.id}) (Title: {self.title}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
 
 class Exam(models.Model):
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
-    date_created = models.DateField(auto_now_add=True)
-    date_updated = models.DateField(auto_now=True)
+    moderator = models.ForeignKey(Moderator, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    how_many_submissions = models.IntegerField(default=0)
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_change = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"Exam for Theme: {self.theme.title} (ID: {self.id})"
+        return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Moderator ID:{self.moderator.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
 
 class Question(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     text = models.TextField()
-    date_created = models.DateField(auto_now_add=True)
-    date_updated = models.DateField(auto_now=True)
+    weight = models.FloatField(default=1.0)
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_change = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"Question: {self.text[:50]}... (ID: {self.id})"
+        return f"(ID:{self.id}) (Exam ID:{self.exam.id}) (Text: {self.text[:15]}...) (Weight: {self.weight}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
 
 class Choices(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField()
     is_correct = models.BooleanField(default=False)
     date_created = models.DateField(auto_now_add=True)
-    date_updated = models.DateField(auto_now=True)
+    last_change = models.DateField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"Choice: {self.text[:50]}... (Correct: {self.is_correct})"
+        return f"(ID:{self.id}) (Question ID:{self.question.id}) (Text: {self.text[:15]}...) (Is Correct: {self.is_correct}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
+
