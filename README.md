@@ -1,6 +1,6 @@
-# django-online-test
+# django-online-exams
 
-É um sistema desenvolvido para facilitar a criação, gestão e resposta a simulados online. Com uma interface intuitiva, ele permite que usuários autenticados criem questões objetivas e organizem simulados personalizados, com diferentes níveis de dificuldade e pesos atribuídos a cada questão. O sistema visa atender tanto educadores quanto estudantes, fornecendo uma plataforma robusta e flexível para práticas de avaliação e estudo. Seja para fins acadêmicos ou para reforço de conhecimentos, o django-online-test se destaca por sua simplicidade e eficiência na geração de simulados de alta qualidade.
+É um sistema desenvolvido para facilitar a criação, gestão e resposta a simulados online. Com uma interface intuitiva, ele permite que usuários autenticados criem questões objetivas e organizem simulados personalizados, com diferentes níveis de dificuldade e pesos atribuídos a cada questão. O sistema visa atender tanto educadores quanto estudantes, fornecendo uma plataforma robusta e flexível para práticas de avaliação e estudo. Seja para fins acadêmicos ou para reforço de conhecimentos, o django-online-exams se destaca por sua simplicidade e eficiência na geração de simulados de alta qualidade.
 
 ## Instalação
 
@@ -10,8 +10,8 @@ Para configurar e executar o projeto Django, siga os passos abaixo:
 
    Se ainda não o fez, clone o repositório do projeto para o seu ambiente local:
    ```bash
-   git clone https://github.com/JoaoRobert0/django-online-test.git
-   cd django-online-test
+   git clone https://github.com/JoaoRobert0/django-online-exams.git
+   cd django-online-exams
    ```
 
 2. **Criar um ambiente virtual**:
