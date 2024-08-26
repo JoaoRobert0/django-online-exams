@@ -1,0 +1,36 @@
+:root {
+    --primary-color: #2C0AA6;
+    --secondary-color: #400FF2;
+    --black-color: #000;
+    --white-color: #FFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-dark {
+    color: var(--black-color);
+}
+
+.text-light {
+    color: var(--white-color);
+}
+
+.navbar {
+    background: var(--primary-color);
+}
