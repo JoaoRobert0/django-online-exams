@@ -1,3 +1,4 @@
+/* Base Styles */
 :root {
     --primary-color: #2C0AA6;
     --secondary-color: #400FF2;
@@ -32,5 +33,154 @@ a {
 }
 
 .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
     background: var(--primary-color);
+}
+
+.logo {
+    font-size: 22px;
+    color: var(--white-color);
+}
+
+.hamburguer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hamburguer .line1,
+.hamburguer .line2,
+.hamburguer .line3 {
+    width: 28px;
+    height: 2px;
+    background-color: var(--white-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Styles for active state */
+.hamburguer.active .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburguer.active .line2 {
+    opacity: 0;
+}
+
+.hamburguer.active .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    overflow: auto;
+    border-left: 1px solid var(--white-color);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.sidebar a:hover {
+    background-color: var(--secondary-color);
+}
+
+.close-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.close-btn .line1,
+.close-btn .line2,
+.close-btn .line3 {
+    width: 28px;
+    height: 2px;
+    background-color: var(--white-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.close-btn.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.close-btn.active .line2 {
+    opacity: 0;
+}
+
+.close-btn.active .line3 {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+.page-name {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+/* HOME */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome-user {
+    color: var(--secondary-color);
+}
+
+.button {
+    color: var(--white-color);
+    background-color: var(--secondary-color);
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 20px; /* Space between items */
+}
+
+.main-nav a {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav a:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
 }
