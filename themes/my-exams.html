@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Exams</title>
     <link rel="stylesheet" href="./css/style.css">
     <!-- Adding the font Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -24,18 +24,29 @@
     <main>
         <!-- Content -->
         <div class="content">
-            <h1 class="page-name">Login</h1>
-            <div class="auth-form">
-                <form action="" method="post">
-                    <input type="text" placeholder="Enter your name or email:">
-                    <input type="password" placeholder="Enter your password:">
-                    <button type="submit">Login</button>
-                </form>
+            <h1 class="page-name">My Exams</h1>
+            <div class="search-bar">
+                <img src="images/search-icon.svg" alt="search icon">
+                <input type="text" placeholder="Enter an title, theme or user">
             </div>
-            <div class="auth-message">
-                <span>Dont have a account? <a href="sign-up.html">Sign-up</a></span>
+            <div class="exams-grid">
+                <a href="my-exam.html" class="exam-card">
+                    <h2>Chemistry Quiz</h2>
+                    <p class="exam-details"><span>Theme:</span> Organic Chemistry</p>
+                    <p class="exam-details"><span>User:</span> Carol Lee</p>
+                    <p class="exam-details"><span>Submission:</span> 28</p>
+                    <p class="exam-details"><span>Questions:</span> 10</p>
+                    <p class="exam-details"><span>Date:</span> August 22, 2024</p>
+                </a>
+                <a href="#" class="exam-card">
+                    <h2>History Final Exam</h2>
+                    <p class="exam-details"><span>Theme:</span> World War II</p>
+                    <p class="exam-details"><span>User:</span> David Brown</p>
+                    <p class="exam-details"><span>Submission:</span> 55</p>
+                    <p class="exam-details"><span>Questions:</span> 25</p>
+                    <p class="exam-details"><span>Date:</span> August 28, 2024</p>
+                </a>
             </div>
-            
         </div>
     </main>
 

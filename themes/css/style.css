@@ -391,3 +391,27 @@ a {
 .button-to-home a:hover {
     background-color: var(--primary-color)
 }
+
+/* MY EXAM(S) */
+.create-choice-btn,
+.create-question-btn {
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.create-choice-btn:hover,
+.create-question-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.header-question,
+.header-theme {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
