@@ -4,6 +4,7 @@
     --secondary-color: #400FF2;
     --black-color: #000;
     --white-color: #FFF;
+    --transparent-gray: rgba(217, 217, 217, 0.25);
 }
 
 * {
@@ -32,6 +33,12 @@ a {
     color: var(--white-color);
 }
 
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -140,7 +147,7 @@ a {
 .page-name {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 50px;
 }
 
 /* HOME */
@@ -148,39 +155,202 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .welcome-user {
     color: var(--secondary-color);
 }
 
-.button {
-    color: var(--white-color);
-    background-color: var(--secondary-color);
-}
-
 .main-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 40px 0;
 }
 
 .main-nav ul {
     display: flex;
-    gap: 20px; /* Space between items */
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 
-.main-nav a {
-    color: var(--white-color);
-    background-color: var(--primary-color);
-    padding: 10px 20px;
-    border-radius: 5px;
+.main-nav ul li {
+    width: 225px;
     text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.main-nav a:hover {
+.main-nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    border-radius: 15px;
+    color: var(--white-color);
+    background-color: var(--secondary-color);
+}
+
+/* AUTHETICATION */
+.auth-form {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form form {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+}
+
+.auth-form form input {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    outline: none;
+    background-color: var(--transparent-gray);
+    border-radius: 15px;
+    border: 1px solid var(--secondary-color);
+}
+
+.auth-form form button {
+    cursor: pointer;
+    margin: 25px 0;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: none;
+    color: var(--white-color);
+    background-color: var(--secondary-color);
+}
+
+.auth-message {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-message a {
+    color: var(--secondary-color);
+}
+
+/* EXAMS & EXAM*/
+.search-bar {
+    width: 100%;
+    margin: 15px 0;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: var(--transparent-gray);
+    border-radius: 15px;
+    border: 1px solid var(--secondary-color);
+}
+
+.search-bar input {
+    width: 100%;
+    margin-left: 10px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+.exams-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .exams-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.exam-card {
+    background-color: var(--secondary-color); /* Fundo com a cor secundária */
+    color: var(--white-color); /* Texto branco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-decoration: none; /* Remove sublinhado do link */
+    display: block; /* Garante que o link ocupe todo o card */
+    transition: transform 0.2s; /* Animação de hover */
+}
+
+.exam-card:hover {
+    transform: translateY(-5px); /* Efeito de elevação no hover */
+}
+
+.exam-card h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.exam-card .exam-details {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.exam-card .exam-details span {
+    font-weight: bold;
+}
+
+/* Página de Detalhes do Exame */
+.exam-header {
     background-color: var(--secondary-color);
     color: var(--white-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.exam-header p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.exam-questions {
+    margin-top: 20px;
+}
+
+.exam-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.question {
+    padding: 15px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.question h3 {
+    margin-bottom: 10px;
+}
+
+.question ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.question ul li {
+    margin-bottom: 10px;
+}
+
+.question input[type="radio"] {
+    margin-right: 10px;
+}
+
+.question label {
+    font-size: 1em;
+}
+
+.submit-button {
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: none;
+    color: var(--white-color);
+    background-color: var(--secondary-color);
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--primary-color)
 }

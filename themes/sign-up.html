@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Sign-up</title>
     <link rel="stylesheet" href="./css/style.css">
     <!-- Adding the font Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -24,20 +24,20 @@
     <main>
         <!-- Content -->
         <div class="content">
-            <h1 class="page-name">Home</h1>
-            <div class="profile">
-                <a href="login.html"><img src="images/profile.svg" alt=""></a>
-                <span>Hello, <span class="welcome-user">visitor</span>!</span>
+            <h1 class="page-name">Sign-up</h1>
+            <div class="auth-form">
+                <form action="" method="post">
+                    <input type="text" placeholder="Enter your username:">
+                    <input type="text" placeholder="Enter your email:">
+                    <input type="password" placeholder="Enter your password:">
+                    <input type="password" placeholder="Confirm your password:">
+                    <button type="submit">Sign-up</button>
+                </form>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="exams.html">Exams</a></li>
-                    <li><a href="#">My Exams</a></li>
-                    <li><a href="#">Create an Exam</a></li>
-                    <li><a href="#">Create a Question</a></li>
-                    <li><a href="#">Create a Choice</a></li>
-                </ul>
-            </nav>
+            <div class="auth-message">
+                <span>Have a account? <a href="login.html">Login</a></span>
+            </div>
+            
         </div>
     </main>
 
@@ -56,7 +56,7 @@
                 <li><a href="#">Create an Exam</a></li>
                 <li><a href="#">Create a Question</a></li>
                 <li><a href="#">Create a Choice</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="#">Login</a></li>
                 <li><a href="#">Sign-up</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
