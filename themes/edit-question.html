@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit a Question</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Adding the font Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="home.html" class="logo">Django-Online-Exams</a>
+            <div class="hamburguer" id="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Content -->
+        <div class="content">
+            <h1 class="page-name">Edit a Question</h1>
+            <div class="crud-form">
+                <form action="">
+                    <select name="exam" id="" required>
+                        <option value="" disabled selected>Select an Exam</option>
+                        <option value="Science Final Exam">Science Final Exam</option>
+                        <option value="Math Final Exam">Math Final Exam</option>
+                        <option value="Physics Midterm">Physics Midterm</option>
+                        <option value="Chesmitry Quiz">Chesmitry Quiz</option>
+                        <option value="History Final Exam">History Final Exam</option>
+                    </select>
+                    <input type="text" name="question-text" placeholder="Enter a text:" required>
+                    <input type="number" name="weight" min="1" placeholder="Select a weight:" required disabled>
+
+                    <div class="edit-or-delete">
+                        <a href="#"><img src="images/trash.svg" alt="delete"></a>
+                        <button type="submit"><img src="images/pencil.svg" alt="confirm edit"></button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </main>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" id="closeSidebar">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="exams.html">Exams</a></li>
+                <li><a href="my-exams.html">My Exams</a></li>
+                <li><a href="#">Create an Exam</a></li>
+                <li><a href="#">Create a Question</a></li>
+                <li><a href="#">Create a Choice</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="sign-up.html">Sign-up</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
