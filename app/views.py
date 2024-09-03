@@ -23,3 +23,21 @@ def my_exams(request):
 
 def my_exam(request):
     return render(request, 'app/my-exam.html')
+
+def create_exam(request):
+    return render(request, 'app/create-exam.html')
+
+def create_question(request):
+    return render(request, 'app/create-question.html')
+
+def create_choice(request):
+    return render(request, 'app/create-choice.html')
+
+def edit_exam(request):
+    return render(request, 'app/edit-exam.html')
+
+def edit_question(request):
+    return render(request, 'app/edit-question.html')
+
+def edit_choice(request):
+    return render(request, 'app/edit-choice.html')

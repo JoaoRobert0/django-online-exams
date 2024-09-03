@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <h1 class="page-name">Edit an Exam</h1>
+    <div class="crud-form">
+        <form action="">
+            <select name="theme" id="" required>
+                <option value="" disabled selected>Select an Theme</option>
+                <option value="Science Final Exam">Science</option>
+                <option value="Math Final Exam">Math</option>
+                <option value="Physics Midterm">Physics</option>
+                <option value="Chesmitry Quiz">Chesmitry</option>
+                <option value="History Final Exam">History</option>
+            </select>
+            <input type="text" name="title" placeholder="Enter a title:" required>
+            
+            <div class="edit-or-delete">
+                <a href="#"><img src="{% static 'images/trash.svg' %}" alt="delete"></a>
+                <button type="submit"><img src="{% static 'images/pencil.svg' %}" alt="confirm edit"></button>
+            </div>
+        </form>
+    </div>
+</div>    
+{% endblock content %}
