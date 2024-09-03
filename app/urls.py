@@ -8,4 +8,6 @@ urlpatterns = [
     path('exams', views.exams, name='exams'),
     path('exam', views.exam, name='exam'),
     path('feedback', views.feedback, name='feedback'),
+    path('my-exams', views.my_exams, name='my-exams'),
+    path('my-exam', views.my_exam, name='my-exam'),
 ]

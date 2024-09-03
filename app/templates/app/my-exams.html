@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <h1 class="page-name">My Exams</h1>
+    <form class="search-bar">
+        <img src="{% static 'images/search-icon.svg' %}" alt="search icon">
+        <input type="text" placeholder="Enter an title, theme or user" name="querry">
+    </form>
+    <div class="exams-grid">
+        <a href="{% url 'my-exam' %}" class="exam-card">
+            <h2>Chemistry Quiz</h2>
+            <p class="exam-details"><span>Theme:</span> Organic Chemistry</p>
+            <p class="exam-details"><span>User:</span> Carol Lee</p>
+            <p class="exam-details"><span>Submission:</span> 28</p>
+            <p class="exam-details"><span>Questions:</span> 10</p>
+            <p class="exam-details"><span>Date:</span> August 22, 2024</p>
+        </a>
+        <a href="{% url 'my-exam' %}" class="exam-card">
+            <h2>History Final Exam</h2>
+            <p class="exam-details"><span>Theme:</span> World War II</p>
+            <p class="exam-details"><span>User:</span> David Brown</p>
+            <p class="exam-details"><span>Submission:</span> 55</p>
+            <p class="exam-details"><span>Questions:</span> 25</p>
+            <p class="exam-details"><span>Date:</span> August 28, 2024</p>
+        </a>
+    </div>
+</div>
+{% endblock content %}

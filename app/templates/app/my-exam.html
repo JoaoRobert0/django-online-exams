@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <h1 class="page-name">My Exam</h1>
+
+    <!-- Exam Metadata -->
+    <div class="exam-header">
+        <div class="header-theme">
+            <p><strong>Theme:</strong> Organic Chemistry</p>
+            <a href="edit-exam.html">
+                <img src="{% static 'images/three-dots-white.svg' %}" alt="">
+            </a>
+        </div>
+        <p><strong>User:</strong> Carol Lee</p>
+        <p><strong>Submission:</strong> 28</p>
+        <p><strong>Questions:</strong> 10</p>
+        <p><strong>Date:</strong> August 22, 2024</p>
+    </div>
+    
+    <!-- Exam Questions -->
+    <div class="exam-questions">
+        <div class="question">
+            <div class="header-question">
+                <h3>Question 1: What is the boiling point of water?</h3>
+                <a href="edit-question.html">
+                    <img src="{% static 'images/three-dots-blue.svg' %}" alt="edit question"> 
+                </a>
+            </div>
+            <ul>
+                <li><input type="radio" name="question1" id="q1a1" value="100°C" disabled> <label for="q1a1">100°C</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+                <li><input type="radio" name="question1" id="q1a2" value="50°C" disabled> <label for="q1a2">50°C</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+                <li><input type="radio" name="question1" id="q1a3" value="0°C" disabled> <label for="q1a3">0°C</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+                <li><input type="radio" name="question1" id="q1a4" value="150°C" disabled> <label for="q1a4">150°C</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+            </ul>
+            <a href="create-choice.html" class="create-choice-btn">Create a new choice</a>
+        </div>
+        
+        <div class="question">
+            <div class="header-question">
+                <h3>Question 1: What is the boiling point of water?</h3>
+                <img src="{% static 'images/three-dots-blue.svg' %}" alt="edit question">
+            </div>
+            <ul>
+                <li><input type="radio" name="question2" id="q2a1" value="O" disabled> <label for="q2a1">O</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+                <li><input type="radio" name="question2" id="q2a2" value="H" disabled> <label for="q2a2">H</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+                <li><input type="radio" name="question2" id="q2a3" value="HO" disabled> <label for="q2a3">HO</label><a href="edit-choice.html"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
+            </ul>
+            <a href="create-choice.html" class="create-choice-btn">Create a new choice</a>
+        </div>
+    </div>
+
+    <a href="create-question.html" class="create-question-btn">Create a new question</a>
+</div>
+{% endblock content %}

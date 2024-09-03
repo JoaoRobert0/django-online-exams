@@ -17,3 +17,9 @@ def exam(request):
 
 def feedback(request):
     return render(request, 'app/feedback.html')
+
+def my_exams(request):
+    return render(request, 'app/my-exams.html')
+
+def my_exam(request):
+    return render(request, 'app/my-exam.html')
