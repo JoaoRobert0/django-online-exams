@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">Django-Online-Exams</a>
+            <a href="{% url 'home' %}" class="logo">Django-Online-Exams</a>
             <div class="hamburguer" id="hamburger">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -22,9 +22,7 @@
     </header>
 
     <main>
-        <div class="content">
-            <h1 class="page-name"></h1>
-        </div>
+        {% block content %}{% endblock content %}
     </main>
 
     <div class="sidebar" id="sidebar">
@@ -36,13 +34,13 @@
         <nav>
             <ul>
                 <li><a href="#">Profile</a></li>
-                <li><a href="exams.html">Exams</a></li>
+                <li><a href="{% url 'exams' %}">Exams</a></li>
                 <li><a href="my-exams.html">My Exams</a></li>
                 <li><a href="#">Create an Exam</a></li>
                 <li><a href="#">Create a Question</a></li>
                 <li><a href="#">Create a Choice</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="sign-up.html">Sign-up</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'sign-up' %}">Sign-up</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </nav>
