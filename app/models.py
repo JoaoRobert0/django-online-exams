@@ -19,14 +19,17 @@ class Theme(models.Model):
 
 class Exam(models.Model):
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
-    moderator = models.ForeignKey(Moderator, on_delete=models.CASCADE)
+    # moderator = models.ForeignKey(Moderator, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     how_many_submissions = models.IntegerField(default=0)
     date_created = models.DateTimeField(auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Moderator ID:{self.moderator.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
+        return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
+    
+    # def __str__(self) -> str:
+    #     return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Moderator ID:{self.moderator.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
 
 class Question(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)

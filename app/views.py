@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from .models import Theme, Exam
 
 def home(request):
     return render(request, 'app/home.html')
@@ -25,7 +27,23 @@ def my_exam(request):
     return render(request, 'app/my-exam.html')
 
 def create_exam(request):
-    return render(request, 'app/create-exam.html')
+    if request.method == 'POST':
+        id_theme = request.POST.get('theme')
+        exam_title = request.POST.get('title')
+
+        if id_theme and exam_title:
+            theme = Theme.objects.get(id=id_theme)
+            
+            exam = Exam.objects.create(
+                theme=theme,
+                title=exam_title
+            )
+            
+            return redirect(reverse('exams'))
+                
+    themes = Theme.objects.all()
+    context = {'themes': themes}
+    return render(request, 'app/create-exam.html', context)
 
 def create_question(request):
     return render(request, 'app/create-question.html')

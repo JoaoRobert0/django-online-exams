@@ -6,14 +6,13 @@
 <div class="content">
     <h1 class="page-name">Create an Exam</h1>
     <div class="crud-form">
-        <form action="">
+        <form action="" method="post">
+            {% csrf_token %}
             <select name="theme" id="" required>
                 <option value="" disabled selected>Select an Theme</option>
-                <option value="Science Final Exam">Science</option>
-                <option value="Math Final Exam">Math</option>
-                <option value="Physics Midterm">Physics</option>
-                <option value="Chesmitry Quiz">Chesmitry</option>
-                <option value="History Final Exam">History</option>
+                {% for theme in themes %}
+                    <option value="{{ theme.id }}">{{ theme.title }}</option>
+                {% endfor %}
             </select>
             <input type="text" name="title" placeholder="Enter a title:" required>
             <button type="submit">Create</button>
