@@ -10,46 +10,15 @@
         <input type="text" placeholder="Enter an title, theme or user" name="querry">
     </form>
     <div class="exams-grid">
-        <a href="{% url 'exam' %}" class="exam-card">
-            <h2>Science Final Exam</h2>
-            <p class="exam-details"><span>Theme:</span>Science</p>
-            <p class="exam-details"><span>User:</span>John Doe</p>
-            <p class="exam-details"><span>Submission:</span> 32</p>
-            <p class="exam-details"><span>Questions:</span> 10</p>
-            <p class="exam-details"><span>Date:</span> August 27, 2024</p>
-        </a>
-        <a href="#" class="exam-card">
-            <h2>Math Final Exam</h2>
-            <p class="exam-details"><span>Theme:</span> Algebra</p>
-            <p class="exam-details"><span>User:</span> Alice Smith</p>
-            <p class="exam-details"><span>Submission:</span> 45</p>
-            <p class="exam-details"><span>Questions:</span> 20</p>
-            <p class="exam-details"><span>Date:</span> August 15, 2024</p>
-        </a>
-        <a href="#" class="exam-card">
-            <h2>Physics Midterm</h2>
-            <p class="exam-details"><span>Theme:</span> Mechanics</p>
-            <p class="exam-details"><span>User:</span> Bob Johnson</p>
-            <p class="exam-details"><span>Submission:</span> 32</p>
-            <p class="exam-details"><span>Questions:</span> 15</p>
-            <p class="exam-details"><span>Date:</span> August 20, 2024</p>
-        </a>
-        <a href="#" class="exam-card">
-            <h2>Chemistry Quiz</h2>
-            <p class="exam-details"><span>Theme:</span> Organic Chemistry</p>
-            <p class="exam-details"><span>User:</span> Carol Lee</p>
-            <p class="exam-details"><span>Submission:</span> 28</p>
-            <p class="exam-details"><span>Questions:</span> 10</p>
-            <p class="exam-details"><span>Date:</span> August 22, 2024</p>
-        </a>
-        <a href="#" class="exam-card">
-            <h2>History Final Exam</h2>
-            <p class="exam-details"><span>Theme:</span> World War II</p>
-            <p class="exam-details"><span>User:</span> David Brown</p>
-            <p class="exam-details"><span>Submission:</span> 55</p>
-            <p class="exam-details"><span>Questions:</span> 25</p>
-            <p class="exam-details"><span>Date:</span> August 28, 2024</p>
-        </a>
+        {% for exam in exams %}
+            <a href="{% url 'exam' exam.id %}" class="exam-card">
+                <h2>{{ exam.title }}</h2>
+                <p class="exam-details"><span>Theme:</span> {{ exam.theme.title }}</p>
+                <p class="exam-details"><span>Submission:</span> {{ exam.how_many_submissions }}</p>
+                <p class="exam-details"><span>Questions:</span> {{ exam.question_set.count }}</p>
+                <p class="exam-details"><span>Date:</span> {{ exam.date_created }}</p>
+            </a>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}

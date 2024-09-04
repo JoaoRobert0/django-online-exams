@@ -12,10 +12,17 @@ def sign_up(request):
     return render(request, 'app/sign-up.html')
 
 def exams(request):
-    return render(request, 'app/exams.html')
+    exams = Exam.objects.all().order_by('-date_created')
+    context = {'exams': exams}
+    return render(request, 'app/exams.html', context)
 
-def exam(request):
-    return render(request, 'app/exam.html')
+def exam(request, id):
+    exam = Exam.objects.get(id=id)
+
+    if exam:
+        context = {'exam': exam}
+
+    return render(request, 'app/exam.html', context)
 
 def feedback(request):
     return render(request, 'app/feedback.html')
