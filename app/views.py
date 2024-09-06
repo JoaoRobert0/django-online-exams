@@ -25,8 +25,32 @@ def exam(request, id):
     return render(request, 'app/exam.html', context)
 
 def feedback(request, id):
-    print(request.POST)
-    return render(request, 'app/feedback.html')
+    exam = Exam.objects.get(id=id)
+    questions = exam.question_set.all()
+    
+    # Obtenha as respostas submetidas
+    choices_submitted = {f'question{i+1}': request.POST.get(f'question{i+1}') for i in range(len(questions))}
+    
+    # Inicialize um dicionário para armazenar o status de cada pergunta
+    question_status = {}
+
+    for question in questions:
+        # Obtenha a resposta correta para a pergunta
+        correct_choice = question.choices_set.filter(is_correct=True).first()
+        submitted_answer = choices_submitted.get(f'question{question.id}')
+        
+        if correct_choice and submitted_answer == correct_choice.text:
+            question_status[question.id] = 'correct'
+        else:
+            question_status[question.id] = 'incorrect'
+    
+    context = {
+        'exam': exam,
+        'question_status': question_status,
+        'choices_submitted': choices_submitted,
+    }
+    
+    return render(request, 'app/feedback.html', context)
 
 def my_exams(request):
     return render(request, 'app/my-exams.html')
@@ -37,14 +61,14 @@ def my_exam(request):
 def create_exam(request):
     if request.method == 'POST':
         id_theme = request.POST.get('theme')
-        exam_title = request.POST.get('title')
+        choices_title = request.POST.get('title')
 
-        if id_theme and exam_title:
+        if id_theme and choices_title:
             theme = Theme.objects.get(id=id_theme)
             
             exam = Exam.objects.create(
                 theme=theme,
-                title=exam_title
+                title=choices_title
             )
             
             return redirect(reverse('exams'))

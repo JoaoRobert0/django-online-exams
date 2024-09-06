@@ -1,31 +1,31 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
 <div class="content">
     <h1 class="page-name">Feedback</h1>
 
     <div class="exam-questions">
-        <div class="question correct">
-            <h3>Question 1: What is the boiling point of water?</h3>
-            <ul>
-                <li><input type="radio" name="question1" id="q1a1" value="100°C"> <label for="q1a1">100°C</label><img src="{% static 'images/correct-choice.svg' %}" alt="correct-choice"></li>
-                <li><input type="radio" name="question1" id="q1a2" value="50°C"> <label for="q1a2">50°C</label></li>
-                <li><input type="radio" name="question1" id="q1a3" value="0°C"> <label for="q1a3">0°C</label></li>
-                <li><input type="radio" name="question1" id="q1a4" value="150°C"> <label for="q1a4">150°C</label></li>
-            </ul>
-        </div>
-        
-        <div class="question incorrect">
-            <h3>Question 2: What is the chemical symbol for water?</h3>
-            <ul>
-                <li><input type="radio" name="question2" id="q2a1" value="O"> <label for="q2a1">O</label></li>
-                <li><input type="radio" name="question2" id="q2a2" value="H"> <label for="q2a2">H</label></li>
-                <li><input type="radio" name="question2" id="q2a3" value="HO"> <label for="q2a3">HO</label></li>
-                <li><input type="radio" name="question2" id="q2a4" value="H2O"> <label for="q2a4">H2O</label><img src="{% static 'images/correct-choice.svg' %}" alt="correct-choice"></li>
-            </ul>
-        </div>
+        {% for question in exam.question_set.all %}
+            {% with question_status|get_item:question.id as status %}
+                <div class="question {{ status }}">
+                    <h3>Question {{ forloop.counter }}: {{ question.text }}</h3>
+                    <ul>
+                        {% for choice in question.choices_set.all %}
+                            <li>
+                                <input type="radio" name="question{{ forloop.parentloop.counter }}" id="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}" value="{{ choice.text }}" {% if choices_submitted|get_item:question.id == choice.text %} checked {% endif %} disabled> 
+                                <label for="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}">{{ choice.text }}</label>
+                                {% if choice.is_correct %}
+                                    <img src="{% static 'images/correct-choice.svg' %}" alt="correct-choice">
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endwith %}
+        {% endfor %}
     </div>
 
     <div class="button-to-home">
