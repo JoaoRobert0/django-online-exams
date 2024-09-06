@@ -24,7 +24,8 @@ def exam(request, id):
 
     return render(request, 'app/exam.html', context)
 
-def feedback(request):
+def feedback(request, id):
+    print(request.POST)
     return render(request, 'app/feedback.html')
 
 def my_exams(request):

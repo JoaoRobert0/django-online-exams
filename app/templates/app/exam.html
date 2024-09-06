@@ -17,7 +17,7 @@
 
     <!-- Exam Questions -->
     {% if exam.question_set.count > 0 %}
-        <form action="{% url 'feedback' %}" method="POST" class="exam-form">
+        <form action="{% url 'feedback' exam.id %}" method="POST" class="exam-form">
             {% csrf_token %}
             <div class="exam-questions">
                 {% for question in exam.question_set.all %}
