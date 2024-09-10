@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 
 class Moderator(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = models.ImageField(upload_to='moderator_images/')
-    description = models.TextField()
+    profile_image = models.ImageField(upload_to='moderator_images/', null=True)
+    description = models.TextField(null=True)
 
     def __str__(self):
-        return f"(ID:{self.id}) (Username: {self.user.username}) (Description: {self.description[:15]}...)"
+        return f"(ID:{self.id}) (Username: {self.user.username})"
 
 class Theme(models.Model):
     title = models.CharField(max_length=255)
@@ -19,7 +19,7 @@ class Theme(models.Model):
 
 class Exam(models.Model):
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
-    # moderator = models.ForeignKey(Moderator, on_delete=models.CASCADE)
+    moderator = models.ForeignKey(Moderator, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     how_many_submissions = models.IntegerField(default=0)
     date_created = models.DateTimeField(auto_now_add=True)

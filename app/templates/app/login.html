@@ -4,11 +4,19 @@
 
 {% block content %}
 <div class="content">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                <span>{{ message }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
     <h1 class="page-name">Login</h1>
     <div class="auth-form">
         <form action="" method="post">
-            <input type="text" placeholder="Enter your name or email:">
-            <input type="password" placeholder="Enter your password:">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter your name or email:" name="username-email">
+            <input type="password" placeholder="Enter your password:" name="password">
             <button type="submit">Login</button>
         </form>
     </div>

@@ -4,55 +4,44 @@
 
 {% block content %}
 <div class="content">
-    <h1 class="page-name">My Exam</h1>
+    <h1 class="page-name">{{ exam.title }}</h1>
 
     <!-- Exam Metadata -->
     <div class="exam-header">
         <div class="header-theme">
-            <p><strong>Theme:</strong> Organic Chemistry</p>
-            <a href="{% url 'edit-exam' %}">
+            <p><strong>Theme:</strong> {{ exam.theme.title }}</p>
+            <a href="{% url 'edit-exam' exam.id %}">
                 <img src="{% static 'images/three-dots-white.svg' %}" alt="">
             </a>
         </div>
-        <p><strong>User:</strong> Carol Lee</p>
-        <p><strong>Submission:</strong> 28</p>
-        <p><strong>Questions:</strong> 10</p>
-        <p><strong>Date:</strong> August 22, 2024</p>
+        <p><strong>User:</strong> {{ exam.moderator.user.username }}</p>
+        <p><strong>Submission:</strong> {{ exam.how_many_submissions }}</p>
+        <p><strong>Questions:</strong> {{ exam.question_set.count }}</p>
+        <p><strong>Date:</strong> {{ exam.date_created }}</p>
     </div>
     
     <!-- Exam Questions -->
     <div class="exam-questions">
-        <div class="question">
-            <div class="header-question">
-                <h3>Question 1: What is the boiling point of water?</h3>
-                <a href="{% url 'edit-question' %}">
-                    <img src="{% static 'images/three-dots-blue.svg' %}" alt="edit question"> 
-                </a>
+        {% for question in exam.question_set.all %}
+            <div class="question">
+                <div class="header-question">
+                    <h3>Question {{ forloop.counter }}: {{ question.text }}</h3>
+                    <a href="{% url 'edit-question' %}">
+                        <img src="{% static 'images/three-dots-blue.svg' %}" alt="edit question"> 
+                    </a>
+                </div>
+                <ul>
+                    {% for choice in question.choices_set.all %}
+                        <li>
+                            <input type="radio" id="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}" disabled> 
+                            <label for="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}">{{ choice.text }}</label>
+                            <a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'create-choice' %}" class="create-choice-btn">Create a new choice</a>
             </div>
-            <ul>
-                <li><input type="radio" name="question1" id="q1a1" value="100°C" disabled> <label for="q1a1">100°C</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-                <li><input type="radio" name="question1" id="q1a2" value="50°C" disabled> <label for="q1a2">50°C</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-                <li><input type="radio" name="question1" id="q1a3" value="0°C" disabled> <label for="q1a3">0°C</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-                <li><input type="radio" name="question1" id="q1a4" value="150°C" disabled> <label for="q1a4">150°C</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-            </ul>
-            <a href="{% url 'create-choice' %}" class="create-choice-btn">Create a new choice</a>
-        </div>
-        
-        <div class="question">
-            <div class="header-question">
-                <h3>Question 1: What is the boiling point of water?</h3>
-                <a href="{% url 'edit-question' %}">
-                    <img src="{% static 'images/three-dots-blue.svg' %}" alt="edit question"> 
-                </a>
-            </div>
-            <ul>
-                <li><input type="radio" name="question2" id="q2a1" value="O" disabled> <label for="q2a1">O</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-                <li><input type="radio" name="question2" id="q2a2" value="H" disabled> <label for="q2a2">H</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-                <li><input type="radio" name="question2" id="q2a3" value="HO" disabled> <label for="q2a3">HO</label><a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a></li>
-            </ul>
-            <a href="{% url 'create-choice' %}" class="create-choice-btn">Create a new choice</a>
-        </div>
-    </div>
+        {% endfor %}
 
     <a href="{% url 'create-question' %}" class="create-question-btn">Create a new question</a>
 </div>

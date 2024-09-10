@@ -14,6 +14,7 @@
             <a href="{% url 'exam' exam.id %}" class="exam-card">
                 <h2>{{ exam.title }}</h2>
                 <p class="exam-details"><span>Theme:</span> {{ exam.theme.title }}</p>
+                <p class="exam-details"><span>User:</span> {{ exam.moderator.user.username }}</p>
                 <p class="exam-details"><span>Submission:</span> {{ exam.how_many_submissions }}</p>
                 <p class="exam-details"><span>Questions:</span> {{ exam.question_set.count }}</p>
                 <p class="exam-details"><span>Date:</span> {{ exam.date_created }}</p>

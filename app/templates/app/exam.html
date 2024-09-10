@@ -9,7 +9,7 @@
     <!-- Exam Metadata -->
     <div class="exam-header">
         <p><strong>Theme:</strong> {{ exam.theme.title }}</p>
-        <!-- <p><strong>User:</strong> John Doe</p> -->
+        <p><strong>User:</strong> {{ exam.moderator.user.username }}</p>
         <p><strong>Submission:</strong> {{ exam.how_many_submissions }}</p>
         <p><strong>Questions:</strong> {{ exam.question_set.count }}</p>
         <p><strong>Date:</strong> {{ exam.date_created }}</p>
