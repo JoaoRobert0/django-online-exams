@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import Theme, Exam, Moderator
+from .models import Theme, Exam, Moderator, Question, Choices
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
@@ -162,12 +162,55 @@ def create_exam(request):
     return render(request, 'app/create-exam.html', context)
 
 @login_required
-def create_question(request):
-    return render(request, 'app/create-question.html')
+def create_question(request, id):
+    exam = get_object_or_404(Exam, id=id)
+
+    if request.method == 'POST':
+        question_text = request.POST.get('question-text')
+        question_weight = request.POST.get('weight')
+                
+        if question_text and question_weight:
+            Question.objects.create(
+                exam = exam,
+                text = question_text,
+                weight = question_weight
+            )
+            return redirect(reverse('my-exam', args=[exam.id]))
+        
+        # Create messages error here!
+
+    context = {
+        'exam': exam,
+    }
+    return render(request, 'app/create-question.html', context)
 
 @login_required
-def create_choice(request):
-    return render(request, 'app/create-choice.html')
+def create_choice(request, id):
+    question = get_object_or_404(Question, id=id)
+
+    if request.method == 'POST':
+        choice_text = request.POST.get('choice-text')
+        correct = request.POST.get('correct')
+                
+        if choice_text:
+            if correct == None:
+                correct = 0
+            else:
+                correct = 1
+            
+            Choices.objects.create(
+                question = question,
+                text = choice_text,
+                is_correct = correct
+            )
+            return redirect(reverse('my-exam', args=[question.exam.id]))
+        
+        # Create messages error here!
+
+    context = {
+        'question': question,
+    }
+    return render(request, 'app/create-choice.html', context)
 
 @login_required
 def edit_exam(request, id):
@@ -197,8 +240,21 @@ def edit_exam(request, id):
     return render(request, 'app/edit-exam.html', context)
 
 @login_required
-def edit_question(request):
-    return render(request, 'app/edit-question.html')
+def edit_question(request, id):
+    question = get_object_or_404(Question, id=id)
+
+    if request.method == 'POST':
+        question_text = request.POST.get('question-text')
+        question_weight = request.POST.get('weight')
+        
+        print(question_text, question_weight)
+        return redirect(reverse('my-exam', args=[question.exam.id]))
+    
+    context = {
+        'question': question,
+    }
+
+    return render(request, 'app/edit-question.html', context)
 
 @login_required
 def edit_choice(request):

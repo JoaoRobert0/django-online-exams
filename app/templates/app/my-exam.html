@@ -26,7 +26,7 @@
             <div class="question">
                 <div class="header-question">
                     <h3>Question {{ forloop.counter }}: {{ question.text }}</h3>
-                    <a href="{% url 'edit-question' %}">
+                    <a href="{% url 'edit-question' question.id %}">
                         <img src="{% static 'images/three-dots-blue.svg' %}" alt="edit question"> 
                     </a>
                 </div>
@@ -39,10 +39,10 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <a href="{% url 'create-choice' %}" class="create-choice-btn">Create a new choice</a>
+                <a href="{% url 'create-choice' question.id %}" class="create-choice-btn">Create a new choice</a>
             </div>
         {% endfor %}
 
-    <a href="{% url 'create-question' %}" class="create-question-btn">Create a new question</a>
+    <a href="{% url 'create-question' exam.id %}" class="create-question-btn">Create a new question</a>
 </div>
 {% endblock content %}

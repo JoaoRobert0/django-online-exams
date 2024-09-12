@@ -6,17 +6,13 @@
 <div class="content">
     <h1 class="page-name">Edit a Question</h1>
     <div class="crud-form">
-        <form action="">
-            <select name="exam" id="" required>
-                <option value="" disabled selected>Select an Exam</option>
-                <option value="Science Final Exam">Science Final Exam</option>
-                <option value="Math Final Exam">Math Final Exam</option>
-                <option value="Physics Midterm">Physics Midterm</option>
-                <option value="Chesmitry Quiz">Chesmitry Quiz</option>
-                <option value="History Final Exam">History Final Exam</option>
+        <form action="" method="post">
+            {% csrf_token %}
+            <select name="exam" id="">
+                <option disabled selected>{{ question.exam.title }}</option>
             </select>
-            <input type="text" name="question-text" placeholder="Enter a text:" required>
-            <input type="number" name="weight" min="1" placeholder="Select a weight:" required disabled>
+            <input type="text" name="question-text" placeholder="Enter a text:" required value="{{ question.text }}">
+            <input type="number" name="weight" min="1" placeholder="Select a weight:" required value="{{ question.weight }}">
 
             <div class="edit-or-delete">
                 <a href="#"><img src="{% static 'images/trash.svg' %}" alt="delete"></a>

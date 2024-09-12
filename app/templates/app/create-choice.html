@@ -6,13 +6,10 @@
 <div class="content">
     <h1 class="page-name">Create a Choice</h1>
     <div class="crud-form">
-        <form action="">
-            <select name="question" id="" required>
-                <option value="" disabled selected>Select a Question:</option>
-                <option value="Question 1">Question 1</option>
-                <option value="Question 2">Question 2</option>
-            </select>
-            <input type="text" name="question-text" placeholder="Enter a text:" required>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" value="{{ question.text }}" disabled>
+            <input type="text" name="choice-text" placeholder="Enter a text:" required>
             <div class="correct-checkbox">
                 <label for="is-correct">Correct</label>
                 <input type="checkbox" name="correct" value="yes" id="is-correct">
