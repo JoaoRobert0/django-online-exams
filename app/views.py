@@ -90,6 +90,11 @@ def exam(request, id):
 
 def feedback(request, id):
     exam = Exam.objects.get(id=id)
+
+    # Increment the submission
+    exam.how_many_submissions += 1
+    exam.save()
+    
     questions = exam.question_set.all()
     
     # Obtenha as respostas submetidas
