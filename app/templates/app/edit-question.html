@@ -8,9 +8,7 @@
     <div class="crud-form">
         <form action="" method="post">
             {% csrf_token %}
-            <select name="exam" id="">
-                <option disabled selected>{{ question.exam.title }}</option>
-            </select>
+            <input type="text" disabled value="{{ question.exam.title }}">
             <input type="text" name="question-text" placeholder="Enter a text:" required value="{{ question.text }}">
             <input type="number" name="weight" min="1" placeholder="Select a weight:" required value="{{ question.weight }}">
 

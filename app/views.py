@@ -94,7 +94,7 @@ def feedback(request, id):
     # Increment the submission
     exam.how_many_submissions += 1
     exam.save()
-    
+
     questions = exam.question_set.all()
     
     # Obtenha as respostas submetidas
@@ -252,7 +252,10 @@ def edit_question(request, id):
         question_text = request.POST.get('question-text')
         question_weight = request.POST.get('weight')
         
-        print(question_text, question_weight)
+        question.text = question_text
+        question.weight = question_weight
+        question.save()
+
         return redirect(reverse('my-exam', args=[question.exam.id]))
     
     context = {
@@ -262,11 +265,39 @@ def edit_question(request, id):
     return render(request, 'app/edit-question.html', context)
 
 @login_required
-def edit_choice(request):
-    return render(request, 'app/edit-choice.html')
+def edit_choice(request, id):
+    choice = get_object_or_404(Choices, id=id)
+
+    if request.method == 'POST':
+        choice_text = request.POST.get('choice-text')
+        correct = request.POST.get('correct')
+
+        if correct == None:
+            correct = False
+        else:
+            correct = True
+
+        choice.text = choice_text
+        choice.is_correct = correct
+
+        choice.save()
+
+        return redirect(reverse('my-exam', args=[choice.question.exam.id]))
+    
+    context = {
+        "choice": choice,
+    }
+
+    return render(request, 'app/edit-choice.html', context)
 
 @login_required
 def delete_exam(request, id):
     exam = get_object_or_404(Exam, id=id)
     exam.delete()
+    return redirect(reverse('my-exams'))
+
+@login_required
+def delete_choice(request, id):
+    choice = get_object_or_404(Choices, id=id)
+    choice.delete()
     return redirect(reverse('my-exams'))

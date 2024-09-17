@@ -35,7 +35,7 @@
                         <li>
                             <input type="radio" id="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}" disabled> 
                             <label for="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}">{{ choice.text }}</label>
-                            <a href="{% url 'edit-choice' %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a>
+                            <a href="{% url 'edit-choice' choice.id %}"><img src="{% static 'images/three-dots-blue.svg' %}" alt="edit choice"></a>
                         </li>
                     {% endfor %}
                 </ul>
