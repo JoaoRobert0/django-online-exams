@@ -297,6 +297,12 @@ def delete_exam(request, id):
     return redirect(reverse('my-exams'))
 
 @login_required
+def delete_question(request, id):
+    question = get_object_or_404(Question, id=id)
+    question.delete()
+    return redirect(reverse('my-exams'))
+
+@login_required
 def delete_choice(request, id):
     choice = get_object_or_404(Choices, id=id)
     choice.delete()

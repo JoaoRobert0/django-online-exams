@@ -18,5 +18,6 @@ urlpatterns = [
     path('edit-question/<int:id>', views.edit_question, name='edit-question'),
     path('edit-choice/<int:id>', views.edit_choice, name='edit-choice'),
     path('delete-exam/<int:id>/', views.delete_exam, name='delete-exam'),
+    path('delete-question/<int:id>/', views.delete_question, name='delete-question'),
     path('delete-choice/<int:id>/', views.delete_choice, name='delete-choice'),
 ]

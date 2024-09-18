@@ -13,7 +13,7 @@
             <input type="number" name="weight" min="1" placeholder="Select a weight:" required value="{{ question.weight }}">
 
             <div class="edit-or-delete">
-                <a href="#"><img src="{% static 'images/trash.svg' %}" alt="delete"></a>
+                <a href="{% url 'delete-question' question.id %}"><img src="{% static 'images/trash.svg' %}" alt="delete"></a>
                 <button type="submit"><img src="{% static 'images/pencil.svg' %}" alt="confirm edit"></button>
             </div>
         </form>

@@ -26,7 +26,7 @@
                         <ul>
                             {% for choice in question.choices_set.all %}
                                 <li>
-                                    <input type="radio" name="question{{ forloop.parentloop.counter }}" id="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}" value="{{ choice.text }}"> 
+                                    <input type="radio" name="question{{ forloop.parentloop.counter }}" id="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}" value="{{ choice.text }}" required> 
                                     <label for="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}">{{ choice.text }}</label>
                                 </li>
                             {% endfor %}
