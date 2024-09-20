@@ -118,6 +118,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
 STATIC_ROOT = '/home/chaves/django-online-exams/staticfiles'  # Onde os arquivos coletados serão armazenados
 
 # Default primary key field type
