@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 
 class Moderator(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = models.ImageField(upload_to='moderator_images/')
-    description = models.TextField()
+    profile_image = models.ImageField(upload_to='moderator_images/', null=True)
+    description = models.TextField(null=True)
 
     def __str__(self):
-        return f"(ID:{self.id}) (Username: {self.user.username}) (Description: {self.description[:15]}...)"
+        return f"(ID:{self.id}) (Username: {self.user.username})"
 
 class Theme(models.Model):
     title = models.CharField(max_length=255)
@@ -26,7 +26,10 @@ class Exam(models.Model):
     last_change = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Moderator ID:{self.moderator.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
+        return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
+    
+    # def __str__(self) -> str:
+    #     return f"(ID:{self.id}) (Theme ID:{self.theme.id}) (Moderator ID:{self.moderator.id}) (Title: {self.title}) (How Many Submissions: {self.how_many_submissions}) (Date Created: {self.date_created}) (Last Change:{self.last_change})"
 
 class Question(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)

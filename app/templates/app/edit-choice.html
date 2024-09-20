@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <h1 class="page-name">Edit a Choice</h1>
+    <div class="crud-form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" disabled value="{{ choice.question.text }}">
+            <input type="text" name="choice-text" placeholder="Enter a text:" value="{{ choice.text }}" required>
+            <div class="correct-checkbox">
+                <label for="is-correct">Correct</label>
+                {% if choice.is_correct %}
+                    <input type="checkbox" name="correct" value="yes" id="is-correct" checked>
+                {% else %}
+                    <input type="checkbox" name="correct" value="yes" id="is-correct">
+                {% endif %}
+            </div>
+
+            <div class="edit-or-delete">
+                <a href="{% url 'delete-choice' choice.id %}"><img src="{% static 'images/trash.svg' %}" alt="delete"></a>
+                <button type="submit"><img src="{% static 'images/pencil.svg' %}" alt="confirm edit"></button>
+            </div>
+        </form>
+    </div>
+</div>    
+{% endblock content %}
