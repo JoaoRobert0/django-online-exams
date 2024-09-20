@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 def home(request):
     return render(request, 'app/home.html')
@@ -77,6 +78,13 @@ def sign_up(request):
 
 def exams(request):
     exams = Exam.objects.all().order_by('-date_created')
+
+    query = request.GET.get('query')
+    if query:
+        exams = exams.filter(
+            Q(title__icontains=query)
+        )
+    
     context = {'exams': exams}
     return render(request, 'app/exams.html', context)
 
@@ -124,8 +132,13 @@ def feedback(request, id):
 @login_required
 def my_exams(request):
     user = request.user
-
     exams = Exam.objects.filter(moderator=user.moderator).order_by('-last_change')
+
+    query = request.GET.get('query')
+    if query:
+        exams = exams.filter(
+            Q(title__icontains=query)
+        )
 
     context = {
         'exams': exams,

@@ -118,6 +118,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Uncomment this variable to local host
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
